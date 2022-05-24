@@ -2,7 +2,7 @@
 
 <p align='center'>一个让访客自助编辑博客友链的程序</p>
 <p align='center'>主要为Wordpress设计，其他平台请自行修改以适配数据库</p>
-
+<p align='center'>求Star~</p>
 
 ## 特性 Feature
 - [x] **适配Wordpress主题** - 不影响主题全局效果
