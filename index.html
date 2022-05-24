@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/awerailgun/filescdn@main/CSS/bootstrap-wp.css" />
+        <link rel="stylesheet" href="https://m.cdn.chs.pub/bootstrap-icons/1.8.0/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_3173475_vmruuve450h.css">
+        <style>
+            body{
+                padding-right: 0!important;
+            }
+            .modal{
+                z-index: 9999;
+            }
+
+        </style>
+        <script src="https://m.cdn.chs.pub/bootstrap/5.1.3/js/bootstrap.bundle.js"></script>
+        <script>
+        function energyTypeCheck_1(chk) {
+            if(chk.checked){ //显示
+                document.getElementById("RSS").style.display = "block";
+            }else{      //隐藏
+                document.getElementById("RSS").style.display = "none";
+            }
+        }
+        function energyTypeCheck_2(chk) {
+            if(chk.checked){ //显示
+                document.getElementById("SSL").style.display = "block";
+            }else{      //隐藏
+                document.getElementById("SSL").style.display = "none";
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <div class="bootstrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 pt-5">
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="btn-group btn-group-lg">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add"><i class="bi bi-person-plus"></i> 申请</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#change" disabled><i class="bi bi-person-rolodex"></i> <del>修改</del></button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" disabled><i class="bi bi-person-x"></i> <del>删除</del></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 添加友链 -->
+            <form action="./friends_add.php" method="post"><!-- 填写friends_add.php文件路径 -->
+            <div class="modal fade" id="add">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">申请友链</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-6 col-12 pt-1">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">博客名称 <font color="red">*</font></span>
+                                        <input type="text" id="blog_name" name="blog_name" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 pt-1">
+                                    <div class="input-group mb-3" data-bs-toggle="tooltip" title="作为审核反馈及修改友链之用">
+                                        <span class="input-group-text">博主邮箱 <font color="red">*</font></span>
+                                        <input type="email" id="blog_email" name="blog_email" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-1">
+                                    <div class="mb-1 mt-1">
+                                        <label class="form-label">博客一句话介绍 <font color="red">*</font></label>
+                                        <input type="text" id="blog_introduce" name="blog_introduce" class="form-control" placeholder="例如：爱折腾的萌新~" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-1">
+                                    <div class="mb-1 mt-1">
+                                        <label class="form-label">博客地址 <font color="red">*</font></label>
+                                        <input type="text" id="blog_url" name="blog_url" class="form-control" placeholder="例如：https://miku.ie" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-1">
+                                    <div class="mb-1 mt-1">
+                                        <label class="form-label">博客Logo <font color="red">*</font></label>
+                                        <input type="text" id="blog_icon" name="blog_icon" class="form-control" placeholder="例如：https://miku.ie/avatar.jpg" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-1">
+                                    <div class="mb-1 mt-1">
+                                        <label class="form-label">备注 </label>
+                                        <input type="text" id="others" name="others" class="form-control" placeholder="可选">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-1">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" name="RSS_check" id="RSS_check" value="true" onclick="energyTypeCheck_1(this)">
+                                        <label class="form-check-label" for="mySwitch">博客是否有RSS <font color="grey">(一般为 <i>博客地址/feed</i> ,如不清楚请忽略)</font> <i class="bi bi-question-circle" style="color: #87b6fa;" data-bs-toggle="tooltip" title="简易信息聚合（也叫聚合内容）是一种基于XML的标准，在互联网上被广泛采用的内容包装和投递协议。RSS(Really Simple Syndication)是一种描述和同步网站内容的格式，是使用最广泛的XML应用。"></i></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-1 pb-2" id="RSS" style="display: none;">
+                                    <div class="mb-1 mt-1">
+                                        <label class="form-label">博客RSS地址</label>
+                                        <input type="text" id="blog_rss" name="blog_rss" class="form-control" placeholder="例如：https://miku.ie/feed/">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" name="adv_check" id="adv_check" value="true" >
+                                        <label class="form-check-label" for="mySwitch">博客内是否含有广告 <font color="grey">(暂不接受纯商业化站点~)</font></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12 pt-1">
+                                    <div class="row">
+                                        <label for="browser" class="form-label">请选择博客SSL情况 <font color="grey">(也就是https)</font></label>
+                                        <div class="col-6 col-lg-2 col-xl-2">
+                                            <select class="form-select" id="blog_set_ssl" name="blog_set_ssl">
+                                                <option value="1">无SSL</option>
+                                                <option value="2">部分SSL</option>
+                                                <option value="3">全站SSL</option>
+                                            </select>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> 关闭</button>
+                            <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> 提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </body>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)})
+    </script>
+</html>
+
